@@ -1,8 +1,8 @@
 workflows:
 
-  # ─── iOS — Test Build (no signing) ──────────────────────────
-  ios-test:
-    name: Pilgrim's Progress — iOS Test
+  # ─── iOS — Unsigned IPA for Sideloadly ──────────────────────
+  ios-unsigned:
+    name: Pilgrim's Progress — iOS Unsigned
     max_build_duration: 120
     instance_type: mac_mini_m1
 
@@ -17,17 +17,25 @@ workflows:
       - name: Capacitor sync
         script: npx cap sync ios
 
-      - name: Build for simulator (no signing needed)
+      - name: Build unsigned archive
         script: |
           xcodebuild \
             -project ios/App/App.xcodeproj \
             -scheme App \
-            -sdk iphonesimulator \
-            -configuration Debug \
+            -sdk iphoneos \
+            -configuration Release \
             CODE_SIGNING_ALLOWED=NO \
-            build
+            archive \
+            -archivePath /tmp/App.xcarchive
+
+      - name: Package into IPA
+        script: |
+          mkdir -p /tmp/Payload
+          cp -r "/tmp/App.xcarchive/Products/Applications/App.app" /tmp/Payload/
+          cd /tmp && zip -r App.ipa Payload
 
     artifacts:
+      - /tmp/App.ipa
       - /tmp/xcodebuild_logs/*.log
 
     publishing:
