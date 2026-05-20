@@ -1,0 +1,15 @@
+{
+  "appId": "com.davidgibson.pilgrimsprogress",
+  "appName": "Pilgrim's Progress",
+  "webDir": ".",
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2000,
+      "backgroundColor": "#2c1f12",
+      "showSpinner": false
+    }
+  }
+}

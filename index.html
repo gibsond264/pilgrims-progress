@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Pilgrim's Progress — Modern Edition</title>
+  <meta name="description" content="John Bunyan's A Pilgrim's Progress retold in contemporary English, with progress tracking and personal reflection questions.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Pilgrim's Progress">
+  <link rel="apple-touch-icon" href="icons/icon-512.png">
+  <meta name="theme-color" content="#2c1f12">
+</head>
+<body>
+
+  <!-- ============================================================
+       HOME VIEW
+       ============================================================ -->
+  <div id="view-home" class="view">
+
+    <header class="home-header">
+      <p class="tagline">John Bunyan · Part One · Modern Edition</p>
+      <h1>A Pilgrim's Progress</h1>
+      <p class="author">Retold in Contemporary English</p>
+
+      <div class="progress-ring-container" role="img" aria-label="Reading progress">
+        <svg class="progress-ring-svg" width="100" height="100" viewBox="0 0 100 100">
+          <circle class="progress-ring-track" cx="50" cy="50" r="42"/>
+          <circle id="ring-fill" class="progress-ring-fill" cx="50" cy="50" r="42"
+            stroke-dasharray="264" stroke-dashoffset="264"/>
+        </svg>
+        <span id="ring-fraction" class="progress-fraction">0/17</span>
+        <span id="progress-label-text" class="progress-label ui-text">Your progress</span>
+      </div>
+
+      <button id="btn-continue" class="btn-continue">Begin Reading</button>
+    </header>
+
+    <p class="home-intro">
+      "As I walked through the wilderness of this world, I lighted on a certain place where was a den, and I laid me down in that place to sleep; and as I slept, I dreamed a dream."
+    </p>
+
+    <div class="ornament">· ✦ ·</div>
+
+    <ul id="chapter-list" class="chapter-list" aria-label="Chapter list">
+      <!-- Populated by app.js -->
+    </ul>
+
+    <footer class="site-footer">
+      <p>Based on <em>The Pilgrim's Progress</em> by John Bunyan (1678) · Public Domain</p>
+      <p style="margin-top:0.4rem">
+        <button id="btn-reset" class="footer-link">Reset all progress</button>
+      </p>
+    </footer>
+
+  </div><!-- /view-home -->
+
+
+  <!-- ============================================================
+       READER VIEW
+       ============================================================ -->
+  <div id="view-reader" class="view">
+
+    <nav class="reader-topbar">
+      <button id="btn-back" class="btn-back">
+        &#8592; Contents
+      </button>
+      <span id="reader-chapter-label" class="reader-progress-text ui-text">Chapter 1 of 17</span>
+      <button class="btn-print ui-text" onclick="window.print()">&#128438; Print</button>
+    </nav>
+
+    <div class="reader-progress-bar">
+      <div id="reader-progress-fill" class="reader-progress-fill" style="width:0%"></div>
+    </div>
+
+    <header class="chapter-banner">
+      <p id="chapter-eyebrow" class="chapter-eyebrow ui-text">Chapter 1</p>
+      <h2 id="chapter-title">Title</h2>
+      <p id="chapter-subtitle" class="subtitle"></p>
+    </header>
+
+    <div class="chapter-image-wrap">
+      <img id="chapter-image" class="chapter-image" src="" alt="">
+    </div>
+
+    <article class="reading-body" id="chapter-body">
+      <!-- Populated by app.js -->
+    </article>
+
+    <div class="mark-read-section">
+      <button id="btn-mark-read" class="btn-mark-read">Mark Chapter as Read</button>
+    </div>
+
+    <section class="reflections-section" aria-label="Reflection questions">
+      <button id="reflections-toggle" class="reflections-toggle">
+        <span>Reflection Questions</span>
+        <span class="arrow">&#9660;</span>
+      </button>
+      <div id="reflections-body" class="reflections-body">
+        <!-- Populated by app.js -->
+      </div>
+    </section>
+
+    <nav class="chapter-nav" aria-label="Chapter navigation">
+      <button id="btn-prev" class="btn-nav prev hidden">
+        <span>&#8592;</span>
+        <span>
+          <span class="nav-label ui-text">Previous</span><br>
+          <span class="nav-chapter-title"></span>
+        </span>
+      </button>
+      <button id="btn-next" class="btn-nav next">
+        <span>
+          <span class="nav-label ui-text">Next</span><br>
+          <span class="nav-chapter-title"></span>
+        </span>
+        <span>&#8594;</span>
+      </button>
+    </nav>
+
+    <footer class="site-footer">
+      <p>Based on <em>The Pilgrim's Progress</em> by John Bunyan (1678) · Public Domain</p>
+    </footer>
+
+  </div><!-- /view-reader -->
+
+  <script src="chapters.js"></script>
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js');
+    }
+  </script>
+</body>
+</html>
