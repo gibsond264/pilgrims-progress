@@ -7,7 +7,7 @@ workflows:
     instance_type: mac_mini_m1
 
     environment:
-      node: v18
+      node: v22
       xcode: latest
 
     scripts:
@@ -53,7 +53,7 @@ workflows:
     instance_type: mac_mini_m1
 
     environment:
-      node: v18
+      node: v22
       java: 17
 
     scripts:
