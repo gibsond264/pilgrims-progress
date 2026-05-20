@@ -1,7 +1,7 @@
 {
   "appId": "com.davidgibson.pilgrimsprogress",
   "appName": "Pilgrim's Progress",
-  "webDir": ".",
+  "webDir": "www",
   "server": {
     "androidScheme": "https"
   },
