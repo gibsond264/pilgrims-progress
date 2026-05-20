@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Pilgrim\'s Progress</string>
+    <string name="title_activity_main">Pilgrim\'s Progress</string>
+    <string name="package_name">com.davidgibson.pilgrimsprogress</string>
+    <string name="custom_url_scheme">com.davidgibson.pilgrimsprogress</string>
+</resources>
